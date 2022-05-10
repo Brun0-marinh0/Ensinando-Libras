@@ -3,3 +3,28 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+:root{
+    --bg:#FCF5F3;
+    --blue:#4E68F1;
+    --border_blue:#2F49D6;
+    --purple:#8455BF;
+    --border_purple:#6D27C5;
+    --yallow:#F2A743;
+    
+    --ceano:#47CEE1;
+    --orange:#FF7528;
+
+    --text-gray:#B0B0B0;
+    --beige:#E7E3D6;
+
+    // width default
+    --width:50rem;
+    //padding
+    --negativeSpace:max(1rem , 1vw);
+}
+
+body{
+    background: var(--bg);
+    color: var(--text-gray);
+}
