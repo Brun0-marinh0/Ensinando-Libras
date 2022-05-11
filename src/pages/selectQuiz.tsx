@@ -1,6 +1,7 @@
 import styles from './styles.module.scss'
 
 import NivelNumber from "../components/NivelNumber";
+import ButtonsQuest from '../components/ButtonsQuest';
 
 export default function selectQuiz(){
     return(
@@ -9,7 +10,7 @@ export default function selectQuiz(){
                 stylesColor={'var(--ceano)'}
                 NivelNumber={1}
             />
-
+            <ButtonsQuest/>
             <NivelNumber
                 stylesColor={'var(--orange)'}
                 NivelNumber={2}
