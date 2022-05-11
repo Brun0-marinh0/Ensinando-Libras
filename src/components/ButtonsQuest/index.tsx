@@ -2,15 +2,25 @@ import { useState } from 'react'
 import Link  from 'next/link'
 
 import styles from './styles.module.scss'
+export interface ButtonsQuestProps{
+    nivelNumber: number,
+    typeQuest: String,
+    imgQuest: string,
+    linkStudy: string,
+    linkQuest:string,
+    styleBg: string,
+    styleBorder: string
+}
 
-export default function ButtonsQuest(){
+export default function ButtonsQuest({nivelNumber, typeQuest, imgQuest, linkStudy, linkQuest, styleBg, styleBorder}:ButtonsQuestProps){
 
     const [showOptions, setShowOptions] = useState(false)
 
     return(
         <>
             <button 
-                className={styles.btnQuest} 
+                className={styles.btnQuest}
+                style={{background: styleBg, borderColor:styleBorder}}
                 onClick={()=> {setShowOptions(true)}}
             >
                 <div className={styles.back}>
@@ -18,15 +28,15 @@ export default function ButtonsQuest(){
                 </div>
                 <div className={styles.container}>
                     <div className={styles.contentInform}>
-                        <p>Nível: 1/5</p>
-                        <h1>Números</h1>
+                        <p>Nível: {nivelNumber}</p>
+                        <h1>{typeQuest}</h1>
                         <div>
                             <p>Começar</p>
                             <img src="./img/buttons/iconStart.svg" alt="" />
                         </div>
                     </div>
                     <div className={styles.ilustration}>
-                        <img src="./img/buttons/ilustrationNumber.svg" alt="" />
+                        <img src={imgQuest} alt="" />
                     </div>
                 </div>
             </button>
@@ -38,11 +48,10 @@ export default function ButtonsQuest(){
                     >
                     <div>
                         <div>
-                            <Link href="/">Studar</Link>
-                            <Link href="/">Praticar</Link>
+                            <Link href={linkStudy}>Studar</Link>
+                            <Link href={linkQuest}>Praticar</Link>
                         </div>
                     </div>   
-
                 </div>
             }
         </>

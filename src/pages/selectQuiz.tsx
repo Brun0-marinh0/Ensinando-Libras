@@ -10,7 +10,34 @@ export default function selectQuiz(){
                 stylesColor={'var(--ceano)'}
                 NivelNumber={1}
             />
-            <ButtonsQuest/>
+
+            {/* buttons nivel 1 =================== */}
+            <ButtonsQuest
+                nivelNumber={2}
+                typeQuest={'Números'}
+                imgQuest={'./img/buttons/ilustrationNumber.svg'}
+                linkStudy={'/'}
+                linkQuest={'/'}
+
+                // styles
+                styleBg={'var(--blue)'}
+                styleBorder={'var(--border_blue)'}
+            />
+
+            <ButtonsQuest
+                nivelNumber={1}
+                typeQuest={'Letras'}
+                imgQuest={'./img/buttons/ilustrationCaracter.svg'}
+                linkStudy={'/number'}
+                linkQuest={'/'}
+
+                // styles
+                styleBg={'var(--purple)'}
+                styleBorder={'var(--border_purple)'}
+            />
+            {/* buttons nivel 1 =================== */}
+            
+
             <NivelNumber
                 stylesColor={'var(--orange)'}
                 NivelNumber={2}
