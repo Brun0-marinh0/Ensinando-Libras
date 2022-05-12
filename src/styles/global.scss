@@ -36,3 +36,15 @@ button{
     cursor: pointer;
     border: none;
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 20px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--beige); 
+    border-radius: 10px;
+  }
+ 
