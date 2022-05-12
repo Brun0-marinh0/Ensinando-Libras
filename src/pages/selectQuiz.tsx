@@ -17,8 +17,8 @@ export default function selectQuiz(){
                 nivelNumber={2}
                 typeQuest={'Números'}
                 imgQuest={'./img/buttons/ilustrationNumber.svg'}
-                linkStudy={'/'}
-                linkQuest={'/'}
+                linkStudy={'/numbers/study'}
+                linkQuest={'/numbers/quiz'}
 
                 // styles
                 styleBg={'var(--blue)'}
@@ -29,8 +29,8 @@ export default function selectQuiz(){
                 nivelNumber={1}
                 typeQuest={'Letras'}
                 imgQuest={'./img/buttons/ilustrationCaracter.svg'}
-                linkStudy={'/number'}
-                linkQuest={'/'}
+                linkStudy={'/caracter/study'}
+                linkQuest={'/caracter/quiz'}
 
                 // styles
                 styleBg={'var(--purple)'}
