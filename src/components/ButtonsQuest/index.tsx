@@ -48,7 +48,7 @@ export default function ButtonsQuest({nivelNumber, typeQuest, imgQuest, linkStud
                     >
                     <div>
                         <div>
-                            <Link href={linkStudy}>Studar</Link>
+                            <Link href={linkStudy}>Estudar</Link>
                             <Link href={linkQuest}>Praticar</Link>
                         </div>
                     </div>   
