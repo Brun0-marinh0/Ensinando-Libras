@@ -2,6 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border-bottom: .3rem solid var(--beige);
+    padding-bottom: 1rem;
 
     .content{
         display: flex;

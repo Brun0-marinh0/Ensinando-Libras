@@ -1,0 +1,7 @@
+.content{
+    display: flex;
+    justify-content: center;
+    .container{
+        width: var(--width);
+    }
+}

@@ -1,0 +1,38 @@
+.frame{
+    display: grid;
+    justify-content: center;
+
+    .quest{
+        height: 10rem;
+        padding: var(--negativeSpace);
+        display: flex;
+        align-items: center;
+    }
+    div{
+        width: max(20rem, 23vw);
+        .options{
+            display: grid;
+            grid-template: 1fr 1fr / 1fr 1fr;
+            gap: 1rem;
+            justify-content: center;
+            padding: 1rem;
+            div{
+                width: 100%;
+                height: max(9rem, 10vw);
+                background: #ffffff;
+                border: .3rem solid #dfdfdf;
+                border-radius: .5rem;
+                cursor: pointer;
+            }
+        }
+    }
+
+    button{
+        height: 3.5rem;
+        font-weight: 900;
+        font-size: 1.3rem;
+        color: var(--bg);
+        background: var(--blue);
+        border-radius: .5rem;
+    }
+}
