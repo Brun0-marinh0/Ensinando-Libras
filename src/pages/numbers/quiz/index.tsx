@@ -1,7 +1,13 @@
+import style from './styles.module.scss'
+
+import Quiz from "../../../components/Quiz";
+
 export default function quiz(){
     return(
-        <div>
-            <h1>quiz number</h1>
+        <div className={style.content}>
+            <div className={style.container}>
+                <Quiz/>
+            </div>
         </div>
     )
 }

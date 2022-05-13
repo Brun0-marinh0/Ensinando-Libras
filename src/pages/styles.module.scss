@@ -1,4 +1,4 @@
-.content{
+.content {
     height: 90vh;
     display: flex;
     flex-direction: column;
@@ -6,4 +6,129 @@
     padding: var(--negativeSpace) 0;
     overflow-y: scroll;
     gap: 1rem;
+}
+
+.frame {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: 3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+
+    .title{
+        color: var(--bg);
+        font-size: max(2rem, 3vw);
+
+        .textTitle{
+            animation: textTitle 2s linear alternate;
+            animation-fill-mode: forwards;
+            transform-origin: center;
+            transform-box: fill-box;
+
+        @keyframes textTitle {
+            from{
+                color: var(--bg);
+            }
+            to{
+                color: var(--purple);
+            }
+        }
+        }
+    }
+
+    button{
+        padding: 1rem;
+        width: max(15rem, 20vw);
+        background: var(--yallow);
+        font-size: 2rem;
+        font-weight: bold;
+        color: var(--bg);
+        margin-bottom: 2rem;
+        border-radius: 1rem;
+        transition: .2s;
+
+        &:hover{
+            font-size: 2.5rem;
+        }
+    }
+
+    .btnStart{
+        animation: btnStart 2s linear alternate;
+        animation-fill-mode: forwards;
+        transform-origin: center;
+        transform-box: fill-box;
+
+        @keyframes btnStart {
+            from{
+                opacity: 1;
+                transform: translateY(0rem);
+            }
+            to{
+                opacity: 0;
+                transform: translateY(10rem);
+            }
+        }
+    }
+}
+
+.curtain {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: 2;
+    overflow: hidden;
+    display: flex;
+
+    div {
+        background: var(--purple);
+        height: 100vh;
+        width: 50%;
+    }
+
+    .curtainL {
+        animation: curtainL 2s linear alternate;
+        animation-fill-mode: forwards;
+        transform-origin: top;
+        transform-box: fill-box;
+        position: relative;
+        bottom: 30rem;
+
+        @keyframes curtainL {
+            from{
+                transform: rotateZ(0deg);
+                height: 200vh;
+                right: 0rem;
+            }
+            to{
+                transform: rotateZ(90deg);
+                height: 200vh;
+                right: 20rem;
+            }
+        }
+    }
+
+    .curtainR {
+        animation: curtainR 2s linear alternate;
+        animation-fill-mode: forwards;
+        transform-origin: top;
+        transform-box: fill-box;
+        position: relative;
+        bottom: 30rem;
+
+        @keyframes curtainR {
+            from{
+                transform: rotateZ(0deg);
+                height: 200vh;
+                left: 0rem;
+            }
+            to{
+                transform: rotateZ(-90deg);
+                height: 200vh;
+                left: 20rem;
+            }
+        }
+    }
 }
