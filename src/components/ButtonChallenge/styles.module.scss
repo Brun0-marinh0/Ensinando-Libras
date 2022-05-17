@@ -11,7 +11,7 @@
         align-items: center;
         text-decoration: none;
         height: 3.5rem;
-        width: max(18rem, 23vw);
+        width: 23rem;
         border-radius: 1rem;
         color: var(--bg);
         font-size: 1.5rem;
@@ -19,6 +19,10 @@
         background: var(--yallow);
         padding: 0 1rem;
         cursor: pointer;
+
+        @media(max-width: 678px){
+            width: max(18rem, 20vw);
+        }
 
         img{
             width: 2.5rem;

@@ -3,9 +3,13 @@
         border-radius: 1rem;
         height: 7.5rem;
         min-height: 7.5rem;
-        width: max(18rem, 23vw);
+        width: auto;
         background: var(--blue);
         border: .3rem solid;
+
+        @media(max-width: 678px){
+            width: max(18rem, 23vw);
+        }
 
         
 
@@ -48,9 +52,7 @@
             }
         }
 
-        @media(max-width: 678px){
-            
-        }
+        
     }
 
     .containerOptios{
