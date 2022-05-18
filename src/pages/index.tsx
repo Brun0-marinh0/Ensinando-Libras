@@ -8,10 +8,6 @@ export default function Home() {
 
   const [myTransition, setMyTransition] = useState(false)
 
-  const t = () => {
-    console.log("POKEMON")
-  }
-
   const transitionCurtain = () => { 
     setMyTransition(true)
     
