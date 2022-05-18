@@ -43,6 +43,7 @@
         padding: var(--negativeSpace);
         display: flex;
         align-items: center;
+        margin-top: 4rem;
     }
     div{
         width: max(20rem, 23vw);
@@ -59,6 +60,16 @@
                 border: .3rem solid #dfdfdf;
                 border-radius: .5rem;
                 cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                transition: .5s;
+
+                &:hover{
+                    border: .3rem solid var(--purple);
+                }
+
             }
         }
 
