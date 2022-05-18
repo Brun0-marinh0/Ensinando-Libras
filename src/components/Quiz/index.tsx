@@ -1,5 +1,6 @@
 import style from './styles.module.scss'
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
 
 
 interface PropsQuestionType {
@@ -23,18 +24,39 @@ interface PropsQuestionType {
             option_c: string,
             option_d: string
         }
-    }
-
+    },
+    check_question: (id: number) => Promise<void>,
+    message_question: (message: string) => void
 }
 
-export default function Quiz({ data }: PropsQuestionType) {
+export default function Quiz({ data, check_question, message_question }: PropsQuestionType) {
 
     console.log(data)
 
-    const basePath_a = "http://localhost:4000/" + data.options.image_a + ".png"
-    const basePath_b = "http://localhost:4000/" + data.options.image_b + ".png"
-    const basePath_c = "http://localhost:4000/" + data.options.image_c + ".png"
-    const basePath_d = "http://localhost:4000/" + data.options.image_d + ".png"
+    const basePath_a = "http://localhost:4000/" + data.options.image_a + ".svg"
+    const basePath_b = "http://localhost:4000/" + data.options.image_b + ".svg"
+    const basePath_c = "http://localhost:4000/" + data.options.image_c + ".svg"
+    const basePath_d = "http://localhost:4000/" + data.options.image_d + ".svg"
+
+    const [description, setDescription] = useState(false)
+
+    const setAnswer = async (answer: boolean) => {
+        if (!answer) {
+            message_question("ERROU")
+            setDescription(true)
+            await check_question(data.id)
+            setDescription(false)
+
+            return
+        }
+
+        message_question("ACERTOU")
+        setDescription(true)
+        await check_question(data.id)
+        setDescription(false)
+        return
+    }
+
 
     return (
         <div className={style.frame}>
@@ -45,7 +67,7 @@ export default function Quiz({ data }: PropsQuestionType) {
                         <div></div>
                     </div>
                     <div className={style.circleNivel}>
-                        <h1></h1>
+                        <h1>1</h1>
                     </div>
                 </div>
             </div>
@@ -55,37 +77,49 @@ export default function Quiz({ data }: PropsQuestionType) {
             </div>
             <div>
                 <div className={style.options}>
-                    <div>
+                    <div onClick={() => setAnswer(data.options.option_a == data.answer)}>
                         <Image src={basePath_a}
                             alt={data.options.option_a}
                             width={100}
                             height={100}
                             objectFit="fill"
                         />
+                        {description && (
+                            <p>{data.options.option_a}</p>
+                        )}
                     </div>
-                    <div>
+                    <div onClick={() => setAnswer(data.options.option_b == data.answer)}>
                         <Image src={basePath_b}
                             alt={data.options.option_b}
                             width={100}
                             height={100}
                             objectFit="fill"
                         />
+                        {description && (
+                            <p>{data.options.option_b}</p>
+                        )}
                     </div>
-                    <div>
+                    <div onClick={() => setAnswer(data.options.option_c == data.answer)}>
                         <Image src={basePath_c}
                             alt={data.options.option_c}
                             width={100}
                             height={100}
                             objectFit="fill"
                         />
+                        {description && (
+                            <p>{data.options.option_c}</p>
+                        )}
                     </div>
-                    <div>
+                    <div onClick={() => setAnswer(data.options.option_d == data.answer)}>
                         <Image src={basePath_d}
                             alt={data.options.option_d}
                             width={100}
                             height={100}
                             objectFit="fill"
                         />
+                        {description && (
+                            <p>{data.options.option_d}</p>
+                        )}
                     </div>
                 </div>
 

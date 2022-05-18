@@ -28,6 +28,15 @@ export default function Quiz() {
 
     const [question, setQuestion] = useState<IData>()
 
+
+    function message_question(message: string): void {
+        alert(message)
+    }
+
+    async function check_question(id: number): Promise<void> {
+        alert(id)
+    }
+
     useEffect(() => {
         const getQuestion = async () => {
 
@@ -47,7 +56,7 @@ export default function Quiz() {
     return (
         <div className={style.content}>
             <div className={style.container}>
-                <QuizNumber data={question} />
+                <QuizNumber data={question} check_question={check_question} message_question={message_question} />
             </div>
         </div>
     )
