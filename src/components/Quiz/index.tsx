@@ -25,13 +25,12 @@ interface PropsQuestionType {
             option_d: string
         }
     },
-    check_question: (id: number) => Promise<void>,
-    message_question: (message: string) => void
+    update_status: (id: number, answer: boolean) => Promise<void>
+    select_question: () => Promise<void>
+    reset_questions: () => Promise<void>
 }
 
-export default function Quiz({ data, check_question, message_question }: PropsQuestionType) {
-
-    console.log(data)
+export default function Quiz({ data, update_status, select_question, reset_questions }: PropsQuestionType) {
 
     const basePath_a = "http://localhost:4000/" + data.options.image_a + ".svg"
     const basePath_b = "http://localhost:4000/" + data.options.image_b + ".svg"
@@ -39,24 +38,32 @@ export default function Quiz({ data, check_question, message_question }: PropsQu
     const basePath_d = "http://localhost:4000/" + data.options.image_d + ".svg"
 
     const [description, setDescription] = useState(false)
+    const [answer, setAnswer] = useState(false)
+    const [message, setMessage] = useState("")
+    const [control, setControl] = useState(false)
 
-    const setAnswer = async (answer: boolean) => {
+    const UpdateQuestion = async (answer: boolean) => {
         if (!answer) {
-            message_question("ERROU")
+            setMessage("ERROU")
             setDescription(true)
-            await check_question(data.id)
-            setDescription(false)
-
+            await update_status(data.id, answer)
+            setControl(true)
             return
         }
 
-        message_question("ACERTOU")
+        setMessage("ACERTOU")
         setDescription(true)
-        await check_question(data.id)
-        setDescription(false)
+        await update_status(data.id, answer)
+        setControl(true)
         return
     }
 
+    const NextQuestion = async () => {
+        setMessage("")
+        setDescription(false)
+        await select_question()
+        setControl(false)
+    }
 
     return (
         <div className={style.frame}>
@@ -85,7 +92,7 @@ export default function Quiz({ data, check_question, message_question }: PropsQu
                             objectFit="fill"
                         />
                         {description && (
-                            <p>{data.options.option_a}</p>
+                            <p className={style.description}>{data.options.option_a}</p>
                         )}
                     </div>
                     <div onClick={() => setAnswer(data.options.option_b == data.answer)}>
@@ -96,7 +103,7 @@ export default function Quiz({ data, check_question, message_question }: PropsQu
                             objectFit="fill"
                         />
                         {description && (
-                            <p>{data.options.option_b}</p>
+                            <p className={style.description}>{data.options.option_b}</p>
                         )}
                     </div>
                     <div onClick={() => setAnswer(data.options.option_c == data.answer)}>
@@ -107,7 +114,7 @@ export default function Quiz({ data, check_question, message_question }: PropsQu
                             objectFit="fill"
                         />
                         {description && (
-                            <p>{data.options.option_c}</p>
+                            <p className={style.description}>{data.options.option_c}</p>
                         )}
                     </div>
                     <div onClick={() => setAnswer(data.options.option_d == data.answer)}>
@@ -118,13 +125,20 @@ export default function Quiz({ data, check_question, message_question }: PropsQu
                             objectFit="fill"
                         />
                         {description && (
-                            <p>{data.options.option_d}</p>
+                            <p className={style.description}>{data.options.option_d}</p>
                         )}
                     </div>
                 </div>
 
             </div>
-            <button>Concluir</button>
+            <button onClick={() => UpdateQuestion(answer)} disabled={control}>Concluir</button>
+            {message != "" && (
+                <div>
+                    <p>{message}</p>
+                    <button onClick={NextQuestion} >Próxima pergunta</button>
+                    <button onClick={reset_questions}>Sair</button>
+                </div>
+            )}
         </div>
     )
 }
