@@ -28,17 +28,42 @@
             transform-origin: center;
             transform-box: fill-box;
 
+            position: relative;
+            z-index: 9;
+
+
         @keyframes textTitle {
             from{
                 color: var(--bg);
+                top: 0;
+                
             }
             to{
                 color: var(--purple);
+                top: 25vh;
+                font-size:10rem;
+                
             }
         }
         }
     }
+    .ilustration{
+        img{
+            animation: myhand 2s linear alternate infinite;
+            animation-fill-mode: forwards;
+            transform-origin: center;
+            transform-box: fill-box;
 
+            @keyframes myhand {
+                from{
+                    transform: rotateY(20deg);
+                }
+                to{
+                    transform: rotateY(-20deg);
+                }
+            }
+        }
+    }
     button{
         padding: 1rem;
         width: max(15rem, 20vw);
