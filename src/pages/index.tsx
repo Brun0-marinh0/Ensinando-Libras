@@ -35,7 +35,9 @@ export default function Home() {
           </h1>
         </div>
         <div>
-          <div className="ilustration"></div>
+          <div className={styles.ilustration}>
+            <img src="./img/hand.svg" alt="" />
+          </div>
           <button 
             onClick={nome_legal}
             className={myTransition ? styles.btnStart : null}
