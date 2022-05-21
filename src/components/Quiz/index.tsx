@@ -44,14 +44,14 @@ export default function Quiz({ data, update_status, select_question, reset_quest
 
     const UpdateQuestion = async (answer: boolean) => {
         if (!answer) {
-            setMessage("ERROU")
+            setMessage("Que pena tente novamente")
             setDescription(true)
             await update_status(data.id, answer)
             setControl(true)
             return
         }
 
-        setMessage("ACERTOU")
+        setMessage("Parabéns você acertou!")
         setDescription(true)
         await update_status(data.id, answer)
         setControl(true)
@@ -80,7 +80,12 @@ export default function Quiz({ data, update_status, select_question, reset_quest
             </div>
 
             <div className={style.quest}>
-                <h1>1-{data.question}?</h1>
+                <h1>{data.question}?</h1>
+                {message != "" && (
+                    <div className={style.toast}>
+                        <h3>{message}</h3>
+                    </div>
+                )}
             </div>
             <div>
                 <div className={style.options}>
@@ -131,14 +136,16 @@ export default function Quiz({ data, update_status, select_question, reset_quest
                 </div>
 
             </div>
-            <button onClick={() => UpdateQuestion(answer)} disabled={control}>Concluir</button>
+
+            {message == "" && (
+                <button onClick={() => UpdateQuestion(answer)} disabled={control}>Concluir</button>
+            )}
             {message != "" && (
-                <div>
-                    <p>{message}</p>
+                <div className={style.bntNext}>
                     <button onClick={NextQuestion} >Próxima pergunta</button>
                     <button onClick={reset_questions}>Sair</button>
                 </div>
-            )}
+            )} 
         </div>
     )
 }

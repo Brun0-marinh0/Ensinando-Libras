@@ -39,11 +39,17 @@
     }
 
     .quest{
-        height: 10rem;
-        padding: var(--negativeSpace);
-        display: flex;
+        max-height: 10rem;
+        padding:0 var(--negativeSpace);
+       
         align-items: center;
         margin-top: 4rem;
+
+        .toast{
+            color: var(--purple);
+            display: flex;
+            width: fit-content;
+        }
     }
     div{
         width: max(20rem, 23vw);
@@ -72,7 +78,7 @@
                     background-color:#dfdfdf;
                     width: 100%;
                     position: relative;
-                    top: .6rem;
+                    top: max(.6rem, .7vw);
                     display: flex;
                     align-items: center;
                     padding: 0 .1rem;
@@ -111,5 +117,20 @@
         color: var(--bg);
         background: var(--blue);
         border-radius: .5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .bntNext{
+        display: grid;
+        gap: .5rem;
+        
+        button:nth-child(2){
+            height: 2rem;
+            background-color: var(--bg);
+            border: .2rem solid var(--blue);
+            color: var(--blue);
+        }
     }
 }
