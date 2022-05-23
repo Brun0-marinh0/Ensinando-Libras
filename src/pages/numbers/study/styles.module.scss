@@ -1,0 +1,57 @@
+.container{
+    max-width: 600px;
+    margin: 0 auto;
+    padding-bottom:5rem;
+
+    header{
+        padding-top:2rem;
+        a{
+            text-decoration: none;
+            color: var(--orange);
+            font-weight: 600;
+            font-size: 1rem;
+            padding: .5rem 1rem;
+            border-radius: .5rem;
+            transition: .5s;
+
+            &:hover{
+                background-color: var(--orange);
+                color: var(--bg);
+                font-size: 1.2rem;
+            }
+
+        }
+    }
+    h1{
+        font-size: max(3rem, 10vw);
+        color: var(--purple);
+    }
+    p{
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+
+    ul{
+        font-weight: 400;
+        margin-bottom: 1rem;
+    }
+    .imgBox{
+        width: 100%;
+        display: grid;
+        gap: .5rem;
+        grid-template-columns: repeat( auto-fit, minmax(7rem, 1fr) );
+
+        img{
+            width: 100%;
+        }
+
+        .myImages{
+            border: .3rem solid #dfdfdf;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--purple);
+        }
+    }
+}
