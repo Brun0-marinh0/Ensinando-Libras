@@ -1,6 +1,7 @@
 import style from './styles.module.scss'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import { log } from 'console'
 
 interface PropsQuestionType {
   data: {
@@ -43,6 +44,7 @@ export default function Quiz({
   const [answer, setAnswer] = useState(false)
   const [message, setMessage] = useState('')
   const [control, setControl] = useState(false)
+  const [accPoints, setAccPoints] = useState(0)
 
   const UpdateQuestion = async (answer: boolean) => {
     if (!answer) {
@@ -53,6 +55,9 @@ export default function Quiz({
       return
     }
 
+    setAccPoints(accPoints+1)
+    console.log(setAccPoints(accPoints+1));
+    
     setMessage('ACERTOU')
     setDescription(true)
     await update_status(data.id, answer)
@@ -75,7 +80,7 @@ export default function Quiz({
             <div></div>
           </div>
           <div className={style.circleNivel}>
-            <h1>1</h1>
+            <h1>{accPoints}</h1>
           </div>
         </div>
       </div>

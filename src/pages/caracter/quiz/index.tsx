@@ -5,6 +5,7 @@ import { SelectQuestion } from '../../../controllers/questions/select-question'
 import { UpdateStatus } from '../../../controllers/questions/update-status'
 import { ResetStatus } from '../../../controllers/questions/reset-status'
 import { RegisterRank } from '../../../controllers/rank/register'
+import { Score } from '../../../components/Score/index' //ac de pontos
 import { useRouter } from 'next/router'
 import { log } from 'console'
 import { api } from '../../../http'
