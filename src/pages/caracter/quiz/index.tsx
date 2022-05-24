@@ -8,8 +8,6 @@ import { RegisterRank } from '../../../controllers/rank/register'
 import { useRouter } from 'next/router'
 import { log } from 'console'
 import { api } from '../../../http'
-import axios from 'axios'
-import useForm from 'react'
 
 interface IData {
   answer: string
@@ -37,7 +35,8 @@ export default function Quiz() {
   const [question, setQuestion] = useState<IData>()
   const [message, setSessage] = useState('')
   const [t, setT] = useState(false)
-  const [name, setName] = useState('Jogador')
+  const [namePlayer, setNamePlayer] = useState('')
+  const [totalScore, setTotalScore] = useState(0)
   const router = useRouter()
 
   async function update_status(id: number, answer: boolean) {
@@ -52,23 +51,8 @@ export default function Quiz() {
   }
 
   async function criar_rank(e) {
-    await RegisterRank({ name: 'hrq', points: 8 })
-    // const {register, handleSubmit} = useForm();
-    // e.prevent.default()
-    // const data = {
-    //   name: e.target.elements.name.value
-    // }
-
-    // api
-    //   .post('http://localhost:4000/ranks/register/', name)
-    //   .then(res => {
-    //     console.log(res.data)
-    //   })
-    //   .catch(err => {
-    //     alert(err)
-    //     console.log(err)
-    //     router.push('/')
-    //   })
+    await RegisterRank({ name: namePlayer, points: totalScore })
+    return
 
     await ResetStatus()
 
@@ -106,15 +90,15 @@ export default function Quiz() {
   if (!question) {
     return (
       <div>
-        <h2>Você acertou 2/3 perguntas!{name}</h2>
+        <h2 className={style.title}>Você acertou 2/3 perguntas!</h2>
         <p>
           Informe seu nome abaixo para ser registrado no ranking do jogo! :D
         </p>
         <form onSubmit={criar_rank}>
           <input
-            value={name}
+            value={namePlayer}
             onChange={e => {
-              setName(e.target.value)
+              setNamePlayer(e.target.value)
             }}
             type="text"
             placeholder="Informe seu nome:"
