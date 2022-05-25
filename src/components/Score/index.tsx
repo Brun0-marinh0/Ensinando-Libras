@@ -5,7 +5,7 @@ export interface ScoreProps{
 export function Score({score,level}:ScoreProps){
     return(
         <>
-            voce pontuou {score} de {level.length}
+            Você pontuou {score} de {level.length}
         </>
     )
 }

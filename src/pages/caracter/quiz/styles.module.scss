@@ -1,7 +1,12 @@
-.content{
-    display: flex;
-    justify-content: center;
-    .container{
-        width: var(--width);
-    }
+.content {
+  display: flex;
+  justify-content: center;
+  .container {
+    width: var(--width);
+  }
+}
+
+.title {
+  color: #8455bf;
+  font-size: 32px;
 }

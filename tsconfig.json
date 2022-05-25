@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "src/http/index.ts", "src/pages/caracter/quiz/ranking.jsx"  ],
   "exclude": [
     "node_modules"
   ]
