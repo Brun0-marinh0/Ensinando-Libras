@@ -1,6 +1,7 @@
 import style from './styles.module.scss'
 import Image from 'next/image'
 import { useEffect, useLayoutEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
 interface PropsQuestionType {
   data: {
@@ -44,9 +45,19 @@ export default function Quiz({
   const [message, setMessage] = useState('')
   const [control, setControl] = useState(false)
   const [accPoints, setAccPoints] = useState(0)
+  const [chances, setChances] = useState(3)
+  const router = useRouter()
+  
+  useEffect(() => {
+    if(chances === 1) {
+      window.alert('CHEGOU EM 0 VIDAS')
+      router.push('/')
+    }
+  }, [chances])
 
   const UpdateQuestion = async (answer: boolean) => {
     if (!answer) {
+      setChances(chances - 1)
       setMessage('Que pena tente novamente')
       setDescription(true)
       await update_status(data.id, answer)
@@ -94,7 +105,7 @@ export default function Quiz({
         <div className={style.options}>
           <div onClick={() => setAnswer(data.options.option_a == data.answer)}>
             <Image
-              src={basePath_a}
+              src={basePath_a.replace('.svg.svg', '.svg')}
               alt={data.options.option_a}
               width={100}
               height={100}
@@ -106,7 +117,7 @@ export default function Quiz({
           </div>
           <div onClick={() => setAnswer(data.options.option_b == data.answer)}>
             <Image
-              src={basePath_b}
+              src={basePath_b.replace('.svg.svg', '.svg')}
               alt={data.options.option_b}
               width={100}
               height={100}
@@ -118,7 +129,7 @@ export default function Quiz({
           </div>
           <div onClick={() => setAnswer(data.options.option_c == data.answer)}>
             <Image
-              src={basePath_c}
+              src={basePath_c.replace('.svg.svg', '.svg')}
               alt={data.options.option_c}
               width={100}
               height={100}
@@ -130,7 +141,7 @@ export default function Quiz({
           </div>
           <div onClick={() => setAnswer(data.options.option_d == data.answer)}>
             <Image
-              src={basePath_d}
+              src={basePath_d.replace('.svg.svg', '.svg')}
               alt={data.options.option_d}
               width={100}
               height={100}
