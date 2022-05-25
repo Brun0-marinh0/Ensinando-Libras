@@ -1,6 +1,14 @@
 import style from './styles.module.scss'
 import Image from 'next/image'
-import { useEffect, useLayoutEffect, useState } from 'react'
+import { useContext, useEffect, useLayoutEffect, useState } from 'react'
+// import Context from '../Context/Context'
+// import {createContext} from 'react'
+
+// const value = {
+//   points: 0
+// }
+
+// const Context = createContext(value)
 
 interface PropsQuestionType {
   data: {
@@ -44,6 +52,7 @@ export default function Quiz({
   const [message, setMessage] = useState('')
   const [control, setControl] = useState(false)
   const [accPoints, setAccPoints] = useState(0)
+  // const [accPoints, setAccPoints] = useContext(Context)
 
   const UpdateQuestion = async (answer: boolean) => {
     if (!answer) {
