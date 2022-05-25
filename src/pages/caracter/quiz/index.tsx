@@ -9,6 +9,7 @@ import { Score } from '../../../components/Score/index' //ac de pontos
 import { useRouter } from 'next/router'
 import { log } from 'console'
 import { api } from '../../../http'
+import axios from 'axios'
 
 interface IData {
   answer: string
@@ -52,14 +53,30 @@ export default function Quiz() {
   }
 
   async function criar_rank(e) {
-    await RegisterRank({ name: namePlayer, points: totalScore })
-    return
+    // await RegisterRank({ name: namePlayer, points: totalScore })
+    // return
 
-    await ResetStatus()
+    const json = {
+      name: namePlayer
+    }
 
-    const res = await SelectQuestion('caracters')
+    axios
+      .post('http://localhost:3000/anscjansc', json)
+      .then(res => {
+        console.log(res.data)
+        return
+      })
+      .catch(err => {
+        alert(err)
+        console.log(err)
+        return
+      })
 
-    setQuestion(res.data)
+    // await ResetStatus()
+
+    // const res = await SelectQuestion('caracters')
+
+    // setQuestion(res.data)
   }
 
   async function reset_status() {
