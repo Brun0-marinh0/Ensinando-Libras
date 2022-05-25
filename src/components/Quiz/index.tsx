@@ -1,7 +1,6 @@
 import style from './styles.module.scss'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
-import { log } from 'console'
+import { useEffect, useLayoutEffect, useState } from 'react'
 
 interface PropsQuestionType {
   data: {
@@ -48,7 +47,7 @@ export default function Quiz({
 
   const UpdateQuestion = async (answer: boolean) => {
     if (!answer) {
-      setMessage('ERROU')
+      setMessage('Que pena tente novamente')
       setDescription(true)
       await update_status(data.id, answer)
       setControl(true)
@@ -56,9 +55,7 @@ export default function Quiz({
     }
 
     setAccPoints(accPoints+1)
-    console.log(setAccPoints(accPoints+1));
-    
-    setMessage('ACERTOU')
+    setMessage('Parabéns você acertou!')
     setDescription(true)
     await update_status(data.id, answer)
     setControl(true)
@@ -86,7 +83,12 @@ export default function Quiz({
       </div>
 
       <div className={style.quest}>
-        <h1>1-{data.question}?</h1>
+        <h1>{data.question}?</h1>
+        {message != '' && (
+          <div className={style.toast}>
+            <h3>{message}</h3>
+          </div>
+        )}
       </div>
       <div>
         <div className={style.options}>
@@ -140,12 +142,14 @@ export default function Quiz({
           </div>
         </div>
       </div>
-      <button onClick={() => UpdateQuestion(answer)} disabled={control}>
-        Concluir
-      </button>
+
+      {message == '' && (
+        <button onClick={() => UpdateQuestion(answer)} disabled={control}>
+          Concluir
+        </button>
+      )}
       {message != '' && (
-        <div>
-          <p>{message}</p>
+        <div className={style.bntNext}>
           <button onClick={NextQuestion}>Próxima pergunta</button>
           <button onClick={reset_questions}>Sair</button>
         </div>
