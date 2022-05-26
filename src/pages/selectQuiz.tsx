@@ -48,8 +48,8 @@ export default function selectQuiz(){
             />
             <footer>
                
-                <Link href='rank'>
-                    <img src="./img/trophy.svg" alt="" />
+                <Link href='rank' className={styles.myRank}>
+                    <img className={styles.myImg} src="./img/trophy.svg" alt="" />
                 </Link>
             </footer>
         </div>

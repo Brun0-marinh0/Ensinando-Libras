@@ -68,7 +68,7 @@ export default function Quiz() {
 
     setQuestion(res.data)
 
-    router.push('/')
+    router.push('/selectQuiz')
   }
 
   async function reset_status() {
@@ -126,7 +126,9 @@ export default function Quiz() {
               placeholder="Informe seu nome:"
             />
             <div>
-              <button type="submit">Criar Rank</button>
+              <button type="submit">
+                Criar Rank
+              </button>
               <button onClick={reset_status}>Sair</button>
             </div>
           </form>

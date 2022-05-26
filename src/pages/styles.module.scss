@@ -16,36 +16,16 @@
         bottom: 0;
         justify-content: center;
         align-items: center;
-
-        a{
-            text-decoration: none;
-            background-color: var(--bg);
-            border: .2rem solid #bdbab1;
-            border-radius: 50%;
-            width: 4rem;
-            height: 4rem;
-            display: flex;
-            justify-content: center;
-            img{
-                width: 100%;
-                min-height: 2.5rem;
-                position: relative;
-                bottom: 0rem;
-                transition: .2s;
-            }
-            transition: .2s;
-
-            &:hover{
-                border: .2rem solid var(--blue);
-                img{
-                    bottom: .5rem;
-                    width: 4.5rem;
-                }
-            }
-        }
-
     }
 }
+
+    .myImg{
+        width: 4rem;
+        min-height: 2.5rem;
+        position: relative;
+        bottom: 0rem;
+        transition: .2s;
+    }
 
 .frame {
     height: 100vh;

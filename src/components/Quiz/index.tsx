@@ -52,10 +52,10 @@ export default function Quiz({
   totalScore,
   incrementScore
 }: PropsQuestionType) {
-  const basePath_a = 'http://localhost:4000/' + data.options.image_a + '.svg'
-  const basePath_b = 'http://localhost:4000/' + data.options.image_b + '.svg'
-  const basePath_c = 'http://localhost:4000/' + data.options.image_c + '.svg'
-  const basePath_d = 'http://localhost:4000/' + data.options.image_d + '.svg'
+  const basePath_a = 'https://manus-inotatec.herokuapp.com/' + data.options.image_a + '.svg'
+  const basePath_b = 'https://manus-inotatec.herokuapp.com/' + data.options.image_b + '.svg'
+  const basePath_c = 'https://manus-inotatec.herokuapp.com/' + data.options.image_c + '.svg'
+  const basePath_d = 'https://manus-inotatec.herokuapp.com/' + data.options.image_d + '.svg'
 
   const [description, setDescription] = useState(false)
   const [answer, setAnswer] = useState(false)
