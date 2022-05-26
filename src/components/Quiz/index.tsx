@@ -2,6 +2,7 @@ import style from './styles.module.scss'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useContext, useEffect, useLayoutEffect, useState } from 'react'
+// import Swal from 'sweetalert2'
 // import Context from '../Context/Context'
 // import {createContext} from 'react'
 
@@ -36,6 +37,8 @@ interface PropsQuestionType {
   select_question: () => Promise<void>
   reset_questions: () => Promise<void>
   getTotal: (point: number) => void
+  chances: number
+  decrementChances: () => void
 }
 
 export default function Quiz({
@@ -43,7 +46,9 @@ export default function Quiz({
   update_status,
   select_question,
   reset_questions,
-  getTotal
+  getTotal,
+  chances,
+  decrementChances
 }: PropsQuestionType) {
   const basePath_a = 'http://localhost:4000/' + data.options.image_a + '.svg'
   const basePath_b = 'http://localhost:4000/' + data.options.image_b + '.svg'
@@ -55,20 +60,12 @@ export default function Quiz({
   const [message, setMessage] = useState('')
   const [control, setControl] = useState(false)
   const [accPoints, setAccPoints] = useState(0)
-  const [chances, setChances] = useState(3)
   const router = useRouter()
-  
-  useEffect(() => {
-    if(chances === 1) {
-      window.alert('CHEGOU EM 0 VIDAS')
-      router.push('/')
-    }
-  }, [chances])
   // const [accPoints, setAccPoints] = useContext(Context)
-
+  
   const UpdateQuestion = async (answer: boolean) => {
     if (!answer) {
-      setChances(chances - 1)
+      decrementChances()
       setMessage('Que pena tente novamente')
       setDescription(true)
       await update_status(data.id, answer)
@@ -81,7 +78,7 @@ export default function Quiz({
     await update_status(data.id, answer)
 
     setAccPoints(accPoints+1)
-    getTotal(accPoints+1)
+    // getTotal(accPoints+1)
     setControl(true)
     return
   }
