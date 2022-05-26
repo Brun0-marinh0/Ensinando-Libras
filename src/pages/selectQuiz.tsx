@@ -3,6 +3,7 @@ import styles from './styles.module.scss'
 import NivelNumber from "../components/NivelNumber";
 import ButtonsQuest from '../components/ButtonsQuest';
 import ButtonsChallenge from '../components/ButtonChallenge';
+import Link from 'next/link';
 
 
 export default function selectQuiz(){
@@ -46,9 +47,10 @@ export default function selectQuiz(){
                 NivelNumber={2}
             />
             <footer>
-                <a href="/rank">
+               
+                <Link href='rank'>
                     <img src="./img/trophy.svg" alt="" />
-                </a>
+                </Link>
             </footer>
         </div>
     )
