@@ -76,7 +76,6 @@ export default function Quiz({
       return
     }
 
-    console.log(accPoints)
     setMessage('Parabéns você acertou!')
     setDescription(true)
     await update_status(data.id, answer)
