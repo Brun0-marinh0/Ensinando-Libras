@@ -36,7 +36,6 @@ interface PropsQuestionType {
   update_status: (id: number, answer: boolean) => Promise<void>
   select_question: () => Promise<void>
   reset_questions: () => Promise<void>
-  getTotal: (point: number) => void
   chances: number
   decrementChances: () => void
   totalScore: number
@@ -48,7 +47,6 @@ export default function Quiz({
   update_status,
   select_question,
   reset_questions,
-  getTotal,
   chances,
   decrementChances,
   totalScore,

@@ -7,8 +7,6 @@ import { ResetStatus } from '../../../controllers/questions/reset-status'
 import { RegisterRank } from '../../../controllers/rank/register'
 import { Score } from '../../../components/Score/index' //ac de pontos
 import { useRouter } from 'next/router'
-import { log } from 'console'
-import { api } from '../../../http'
 import Swal from 'sweetalert2'
 
 interface IData {
@@ -144,7 +142,6 @@ export default function Quiz() {
           update_status={update_status}
           select_question={select_question}
           reset_questions={reset_questions}
-          getTotal={getTotal}
           chances={chances}
           decrementChances={decrementChances}
           totalScore={totalScore}

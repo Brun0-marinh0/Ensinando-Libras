@@ -6,6 +6,7 @@ import { UpdateStatus } from '../../../controllers/questions/update-status'
 import { ResetStatus } from '../../../controllers/questions/reset-status'
 import { RegisterRank } from '../../../controllers/rank/register'
 import { useRouter } from 'next/router'
+import Swal from 'sweetalert2'
 
 interface IData {
   answer: string
@@ -34,7 +35,18 @@ export default function Quiz() {
   const [t, setT] = useState(false)
   const [namePlayer, setNamePlayer] = useState('')
   const [totalScore, setTotalScore] = useState(0)
+  const [chances, setChances] = useState(3)
   const router = useRouter()
+
+  const decrementChances = () => {
+    // Decrementa uma chance
+    setChances(chances - 1)
+  }
+
+  const incrementScore = () => {
+    // Incrementa uma pontuação
+    setTotalScore(totalScore + 1)
+  }
 
   async function update_status(id: number, answer: boolean) {
     // Envia a pergunta para o backend
@@ -82,10 +94,22 @@ export default function Quiz() {
     getQuestion()
   }, [])
 
-  if (!question) {
+  useEffect(() => {
+    const handle = async () => {
+      if(chances === 0) {
+        await Swal.fire({
+          title: 'Suas chances acabaram',
+          text: 'Você errou 3 vezes :('
+        })
+      }
+    }
+    handle()
+  }, [chances])
+
+  if (!question || chances === 0) {
     return (
       <div>
-        <h2 className={style.title}>Você acertou 2/3 perguntas!</h2>
+        <h2 className={style.title}>Você acertou {totalScore} perguntas!</h2>
         <p>
           Informe seu nome abaixo para ser registrado no ranking do jogo! :D
         </p>
@@ -114,6 +138,10 @@ export default function Quiz() {
           update_status={update_status}
           reset_questions={reset_questions}
           select_question={select_question}
+          chances={chances}
+          decrementChances={decrementChances}
+          totalScore={totalScore}
+          incrementScore={incrementScore}
         />
       </div>
     </div>
