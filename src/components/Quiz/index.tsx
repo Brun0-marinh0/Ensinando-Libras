@@ -92,6 +92,41 @@ export default function Quiz({
     setControl(false)
   }
 
+  const [styles, setStyles] = useState(true);
+  const [cor, setCor] = useState('.3rem solid #dfdfdf');
+  const [styles2, setStyles2] = useState(true);
+  const [cor2, setCor2] = useState('.3rem solid #dfdfdf');
+  const [styles3, setStyles3] = useState(true);
+  const [cor3, setCor3] = useState('.3rem solid #dfdfdf');
+  const [styles4, setStyles4] = useState(true);
+  const [cor4, setCor4] = useState('.3rem solid #dfdfdf');
+
+  useEffect(() => {
+    setCor((state) => styles ? '' : '.3rem solid var(--blue)');
+    setCor2((state) => styles2 ? '' : '.3rem solid var(--blue)');
+    setCor3((state) => styles3 ? '' : '.3rem solid var(--blue)');
+    setCor4((state) => styles4 ? '' : '.3rem solid var(--blue)');
+  }, [styles, styles2, styles3, styles4]);
+
+  function selectButton() {
+    setAnswer(data.options.option_a == data.answer)
+    setStyles(states => !states)
+  }
+  function selectButton2() {
+    setAnswer(data.options.option_b == data.answer)
+    setStyles2(states => !states)
+  }
+  function selectButton3() {
+    setAnswer(data.options.option_c == data.answer)
+    setStyles3(states => !states)
+  }
+  function selectButton4() {
+    setAnswer(data.options.option_d == data.answer)
+    setStyles4(states => !states )
+  }
+
+  
+
   return (
     <div className={style.frame}>
       <div className={style.nivel}>
@@ -124,7 +159,9 @@ export default function Quiz({
       </div>
       <div>
         <div className={style.options}>
-          <div onClick={() => setAnswer(data.options.option_a == data.answer)}>
+          <div onClick={selectButton}style={{
+              border: cor
+            }}>
             <Image
               src={basePath_a.replace('.svg.svg', '.svg')}
               alt={data.options.option_a}
@@ -136,7 +173,9 @@ export default function Quiz({
               <p className={style.description}>{data.options.option_a}</p>
             )}
           </div>
-          <div onClick={() => setAnswer(data.options.option_b == data.answer)}>
+          <div onClick={selectButton2} style={{
+            border: cor2
+          }}>
             <Image
               src={basePath_b.replace('.svg.svg', '.svg')}
               alt={data.options.option_b}
@@ -148,7 +187,9 @@ export default function Quiz({
               <p className={style.description}>{data.options.option_b}</p>
             )}
           </div>
-          <div onClick={() => setAnswer(data.options.option_c == data.answer)}>
+          <div onClick={selectButton3} style={{
+            border: cor3
+          }}>
             <Image
               src={basePath_c.replace('.svg.svg', '.svg')}
               alt={data.options.option_c}
@@ -160,7 +201,9 @@ export default function Quiz({
               <p className={style.description}>{data.options.option_c}</p>
             )}
           </div>
-          <div onClick={() => setAnswer(data.options.option_d == data.answer)}>
+          <div onClick={selectButton4} style={{
+            border: cor4
+          }}>
             <Image
               src={basePath_d.replace('.svg.svg', '.svg')}
               alt={data.options.option_d}
