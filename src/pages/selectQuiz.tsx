@@ -15,7 +15,7 @@ export default function selectQuiz(){
 
             {/* buttons nivel 1 =================== */}
             <ButtonsQuest
-                nivelNumber={2}
+                nivelNumber={1}
                 typeQuest={'Números'}
                 imgQuest={'./img/buttons/ilustrationNumber.svg'}
                 linkStudy={'/numbers/study'}
@@ -43,7 +43,7 @@ export default function selectQuiz(){
             
             <NivelNumber
                 stylesColor={'var(--orange)'}
-                NivelNumber={1}
+                NivelNumber={2}
             />
             <footer>
                 <a href="/rank">
