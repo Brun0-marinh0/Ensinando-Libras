@@ -90,6 +90,10 @@ export default function Quiz({
     setDescription(false)
     await select_question()
     setControl(false)
+    setStyles(true)
+    setStyles2(true)
+    setStyles3(true)
+    setStyles4(true)
   }
 
   const [styles, setStyles] = useState(true);
@@ -102,27 +106,39 @@ export default function Quiz({
   const [cor4, setCor4] = useState('.3rem solid #dfdfdf');
 
   useEffect(() => {
-    setCor((state) => styles ? '' : '.3rem solid var(--blue)');
-    setCor2((state) => styles2 ? '' : '.3rem solid var(--blue)');
-    setCor3((state) => styles3 ? '' : '.3rem solid var(--blue)');
-    setCor4((state) => styles4 ? '' : '.3rem solid var(--blue)');
+    setCor(() => styles ? '' : '.3rem solid var(--blue)');
+    setCor2(() => styles2 ? '' : '.3rem solid var(--blue)');
+    setCor3(() => styles3 ? '' : '.3rem solid var(--blue)');
+    setCor4(() => styles4 ? '' : '.3rem solid var(--blue)');
   }, [styles, styles2, styles3, styles4]);
 
   function selectButton() {
     setAnswer(data.options.option_a == data.answer)
-    setStyles(states => !states)
+    setStyles(false)
+    setStyles2(true)
+    setStyles3(true)
+    setStyles4(true)
   }
   function selectButton2() {
     setAnswer(data.options.option_b == data.answer)
-    setStyles2(states => !states)
+    setStyles2(false)
+    setStyles(true)
+    setStyles3(true)
+    setStyles4(true)
   }
   function selectButton3() {
     setAnswer(data.options.option_c == data.answer)
-    setStyles3(states => !states)
+    setStyles3(false)
+    setStyles2(true)
+    setStyles(true)
+    setStyles4(true)
   }
   function selectButton4() {
     setAnswer(data.options.option_d == data.answer)
-    setStyles4(states => !states )
+    setStyles4(false)
+    setStyles2(true)
+    setStyles3(true)
+    setStyles(true)
   }
 
   
