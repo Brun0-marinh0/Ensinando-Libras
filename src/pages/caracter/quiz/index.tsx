@@ -40,9 +40,13 @@ export default function Quiz() {
   const [totalScore, setTotalScore] = useState(0)
   const router = useRouter()
 
+  function getTotal(point: number){
+    setTotalScore(point)
+    console.log(point)
+  }
+
   async function update_status(id: number, answer: boolean) {
     // Envia a pergunta para o backend
-
     await UpdateStatus(id)
   }
 
@@ -54,12 +58,6 @@ export default function Quiz() {
   async function criar_rank(e) {
     await RegisterRank({ name: namePlayer, points: totalScore })
     return
-
-    await ResetStatus()
-
-    const res = await SelectQuestion('caracters')
-
-    setQuestion(res.data)
   }
 
   async function reset_status() {
@@ -90,24 +88,27 @@ export default function Quiz() {
 
   if (!question) {
     return (
-      <div>
-        <h2 className={style.title}>Você acertou 2/3 perguntas!</h2>
-        <p>
-          Informe seu nome abaixo para ser registrado no ranking do jogo! :D
-        </p>
-        <form onSubmit={criar_rank}>
-          <input
-            value={namePlayer}
-            onChange={e => {
-              setNamePlayer(e.target.value)
-            }}
-            type="text"
-            placeholder="Informe seu nome:"
-          />
-
-          <button type="submit">Criar Rank</button>
-          <button onClick={reset_status}>Sair</button>
-        </form>
+      <div className={style.card}>
+        <div className={style.headerTitle}>
+          <h2>Você acertou <span>2</span>  perguntas!</h2>
+        </div>
+        <div className={style.form}>
+          <p>Informe seu nome abaixo para ser registrado no ranking do jogo! :D</p>
+          <form onSubmit={criar_rank}>
+            <input
+              value={namePlayer}
+              onChange={e => {
+                setNamePlayer(e.target.value)
+              }}
+              type="text"
+              placeholder="Informe seu nome:"
+            />
+            <div>
+              <button type="submit">Criar Rank</button>
+              <button onClick={reset_status}>Sair</button>
+            </div>
+          </form>
+        </div>
       </div>
     )
   }
@@ -120,6 +121,7 @@ export default function Quiz() {
           update_status={update_status}
           select_question={select_question}
           reset_questions={reset_questions}
+          getTotal={getTotal}
         />
       </div>
     </div>

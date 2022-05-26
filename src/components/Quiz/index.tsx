@@ -34,13 +34,15 @@ interface PropsQuestionType {
   update_status: (id: number, answer: boolean) => Promise<void>
   select_question: () => Promise<void>
   reset_questions: () => Promise<void>
+  getTotal: (point: number) => void
 }
 
 export default function Quiz({
   data,
   update_status,
   select_question,
-  reset_questions
+  reset_questions,
+  getTotal
 }: PropsQuestionType) {
   const basePath_a = 'http://localhost:4000/' + data.options.image_a + '.svg'
   const basePath_b = 'http://localhost:4000/' + data.options.image_b + '.svg'
@@ -63,10 +65,13 @@ export default function Quiz({
       return
     }
 
-    setAccPoints(accPoints+1)
+    console.log(accPoints)
     setMessage('Parabéns você acertou!')
     setDescription(true)
     await update_status(data.id, answer)
+
+    setAccPoints(accPoints+1)
+    getTotal(accPoints+1)
     setControl(true)
     return
   }
