@@ -47,6 +47,11 @@ export default function Quiz() {
     setChances(chances - 1)
   }
 
+  const incrementScore = () => {
+    // Incrementa uma pontuação
+    setTotalScore(totalScore + 1)
+  }
+
   function getTotal(point: number){
     setTotalScore(point)
   }
@@ -142,6 +147,8 @@ export default function Quiz() {
           getTotal={getTotal}
           chances={chances}
           decrementChances={decrementChances}
+          totalScore={totalScore}
+          incrementScore={incrementScore}
         />
       </div>
     </div>

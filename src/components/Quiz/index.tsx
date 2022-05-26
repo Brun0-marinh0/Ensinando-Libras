@@ -39,6 +39,8 @@ interface PropsQuestionType {
   getTotal: (point: number) => void
   chances: number
   decrementChances: () => void
+  totalScore: number
+  incrementScore: () => void
 }
 
 export default function Quiz({
@@ -48,7 +50,9 @@ export default function Quiz({
   reset_questions,
   getTotal,
   chances,
-  decrementChances
+  decrementChances,
+  totalScore,
+  incrementScore
 }: PropsQuestionType) {
   const basePath_a = 'http://localhost:4000/' + data.options.image_a + '.svg'
   const basePath_b = 'http://localhost:4000/' + data.options.image_b + '.svg'
@@ -72,7 +76,7 @@ export default function Quiz({
       setControl(true)
       return
     }
-
+    incrementScore()
     setMessage('Parabéns você acertou!')
     setDescription(true)
     await update_status(data.id, answer)
