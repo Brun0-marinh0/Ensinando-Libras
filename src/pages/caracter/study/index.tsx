@@ -36,7 +36,7 @@ export default function study(){
 
     const listImages=myImages.map(
         (c, i) => 
-       <div className={styles.myImages}>
+       <div className={styles.myImages} key={i}>
            <img src={c.image} alt={c.title} />
            <h2>{c.title}</h2>
        </div>
