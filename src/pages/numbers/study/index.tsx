@@ -32,12 +32,7 @@ export default function study(){
             </header>
             <h1>Números</h1>
             <div>
-                <p>Abaixo você conseguirá visualizar as letras do alfabeto (A-Z + Ç). Assim como as letras, os números também são representados manualmente. Quando devemos utilizar?</p>
-                <ul>
-                    <li>Para indagar ou condizer o nome de pessoas, lugares, marcas e cláusula técnicos que até agora não possuem registro próprio em Libras;</li>
-                    <li>Para indagar os sinais que até agora não conhecemos. Por exemplo, se alguém não conhece o registro de Alemanha, pode indagar soletrando A-L-E-M-A-N-H-A;</li>
-                    <li>Para indicar um vocábulo da língua portuguesa que por suprimento passou a ser à Libras. Exemplo: CPU, USB.</li>
-                </ul>
+                <p>Abaixo você conseguirá visualizar os números de (0 - 9).</p>
             </div>
             <div className={styles.imgBox}>
                 {listImages}
