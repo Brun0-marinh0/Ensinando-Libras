@@ -67,6 +67,8 @@ export default function Quiz() {
     const res = await SelectQuestion('numbers')
 
     setQuestion(res.data)
+
+    router.push('/')
   }
 
   async function reset_status() {

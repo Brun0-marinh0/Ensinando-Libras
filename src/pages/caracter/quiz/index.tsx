@@ -66,7 +66,7 @@ export default function Quiz() {
 
   async function criar_rank(e) {
     await RegisterRank({ name: namePlayer, points: totalScore })
-    return
+    router.push('/')
   }
 
   async function reset_status() {
