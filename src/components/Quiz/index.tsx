@@ -96,8 +96,17 @@ export default function Quiz({
     <div className={style.frame}>
       <div className={style.nivel}>
         <div>
-          <div className={style.progress}>
-            <div></div>
+          {/* 
+            barra diminuir com a vida
+
+            <div className={style.progress}>
+              <div></div>
+            </div> 
+          */}
+          <div className={style.vidas}>
+            <img src="../img/vidas.svg" alt="" />
+            <p>{chances}</p>
+
           </div>
           <div className={style.circleNivel}>
             <h1>{accPoints}</h1>
