@@ -108,24 +108,27 @@ export default function Quiz() {
 
   if (!question || chances === 0) {
     return (
-      <div>
-        <h2 className={style.title}>Você acertou {totalScore} perguntas!</h2>
-        <p>
-          Informe seu nome abaixo para ser registrado no ranking do jogo! :D
-        </p>
-        <form onSubmit={criar_rank}>
-          <input
-            value={namePlayer}
-            onChange={e => {
-              setNamePlayer(e.target.value)
-            }}
-            type="text"
-            placeholder="Informe seu nome:"
-          />
-
-          <button type="submit">Criar Rank</button>
-          <button onClick={reset_status}>Sair</button>
-        </form>
+      <div className={style.card}>
+        <div className={style.headerTitle}>
+          <h2>Você acertou <span>{totalScore}</span>  perguntas!</h2>
+        </div>
+        <div className={style.form}>
+          <p>Informe seu nome abaixo para ser registrado no ranking do jogo! :D</p>
+          <form onSubmit={criar_rank}>
+            <input
+              value={namePlayer}
+              onChange={e => {
+                setNamePlayer(e.target.value)
+              }}
+              type="text"
+              placeholder="Informe seu nome:"
+            />
+            <div>
+              <button type="submit">Criar Rank</button>
+              <button onClick={reset_status}>Sair</button>
+            </div>
+          </form>
+        </div>
       </div>
     )
   }
