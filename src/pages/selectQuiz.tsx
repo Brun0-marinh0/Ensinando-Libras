@@ -43,7 +43,7 @@ export default function selectQuiz(){
             
             <NivelNumber
                 stylesColor={'var(--orange)'}
-                NivelNumber={2}
+                NivelNumber={1}
             />
             <footer>
                 <a href="/rank">
