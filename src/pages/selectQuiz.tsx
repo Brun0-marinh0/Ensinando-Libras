@@ -4,6 +4,7 @@ import NivelNumber from "../components/NivelNumber";
 import ButtonsQuest from '../components/ButtonsQuest';
 import ButtonsChallenge from '../components/ButtonChallenge';
 
+
 export default function selectQuiz(){
     return(
         <div className={styles.content}>
@@ -42,8 +43,13 @@ export default function selectQuiz(){
             
             <NivelNumber
                 stylesColor={'var(--orange)'}
-                NivelNumber={2}
+                NivelNumber={1}
             />
+            <footer>
+                <a href="/rank">
+                    <img src="./img/trophy.svg" alt="" />
+                </a>
+            </footer>
         </div>
     )
 }

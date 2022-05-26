@@ -6,6 +6,45 @@
     padding: var(--negativeSpace) 0;
     overflow-y: scroll;
     gap: 1rem;
+
+    footer{
+        background-color: var(--beige);
+        display: flex;
+        width: 100%;
+        height: 5rem;
+        position: fixed;
+        bottom: 0;
+        justify-content: center;
+        align-items: center;
+
+        a{
+            text-decoration: none;
+            background-color: var(--bg);
+            border: .2rem solid #bdbab1;
+            border-radius: 50%;
+            width: 4rem;
+            height: 4rem;
+            display: flex;
+            justify-content: center;
+            img{
+                width: 100%;
+                min-height: 2.5rem;
+                position: relative;
+                bottom: 0rem;
+                transition: .2s;
+            }
+            transition: .2s;
+
+            &:hover{
+                border: .2rem solid var(--blue);
+                img{
+                    bottom: .5rem;
+                    width: 4.5rem;
+                }
+            }
+        }
+
+    }
 }
 
 .frame {
@@ -153,6 +192,47 @@
                 transform: rotateZ(-90deg);
                 height: 200vh;
                 left: 20rem;
+            }
+        }
+    }
+}
+
+.modalContent{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    .modal{
+        background: #FFFFFF;
+        height: 20rem;
+        padding: 1rem;
+
+        h1{
+            color: var(--purple);
+        }
+        h2{
+            color: var(--blue);
+            font-weight: 400;
+        }
+
+        header{
+            padding-top:2rem;
+            a{
+                text-decoration: none;
+                color: var(--orange);
+                font-weight: 600;
+                font-size: 1rem;
+                padding: .5rem 1rem;
+                border-radius: .5rem;
+                transition: .5s;
+    
+                &:hover{
+                    background-color: var(--orange);
+                    color: var(--bg);
+                    font-size: 1.2rem;
+                }
+    
             }
         }
     }

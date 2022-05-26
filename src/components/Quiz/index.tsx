@@ -2,6 +2,7 @@ import style from './styles.module.scss'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useContext, useEffect, useLayoutEffect, useState } from 'react'
+// import Swal from 'sweetalert2'
 // import Context from '../Context/Context'
 // import {createContext} from 'react'
 
@@ -35,7 +36,10 @@ interface PropsQuestionType {
   update_status: (id: number, answer: boolean) => Promise<void>
   select_question: () => Promise<void>
   reset_questions: () => Promise<void>
-  getTotal: (point: number) => void
+  chances: number
+  decrementChances: () => void
+  totalScore: number
+  incrementScore: () => void
 }
 
 export default function Quiz({
@@ -43,7 +47,10 @@ export default function Quiz({
   update_status,
   select_question,
   reset_questions,
-  getTotal
+  chances,
+  decrementChances,
+  totalScore,
+  incrementScore
 }: PropsQuestionType) {
   const basePath_a = 'http://localhost:4000/' + data.options.image_a + '.svg'
   const basePath_b = 'http://localhost:4000/' + data.options.image_b + '.svg'
@@ -55,33 +62,25 @@ export default function Quiz({
   const [message, setMessage] = useState('')
   const [control, setControl] = useState(false)
   const [accPoints, setAccPoints] = useState(0)
-  const [chances, setChances] = useState(3)
   const router = useRouter()
-  
-  useEffect(() => {
-    if(chances === 1) {
-      window.alert('CHEGOU EM 0 VIDAS')
-      router.push('/')
-    }
-  }, [chances])
   // const [accPoints, setAccPoints] = useContext(Context)
-
+  
   const UpdateQuestion = async (answer: boolean) => {
     if (!answer) {
-      setChances(chances - 1)
+      decrementChances()
       setMessage('Que pena tente novamente')
       setDescription(true)
       await update_status(data.id, answer)
       setControl(true)
       return
     }
-
+    incrementScore()
     setMessage('Parabéns você acertou!')
     setDescription(true)
     await update_status(data.id, answer)
 
     setAccPoints(accPoints+1)
-    getTotal(accPoints+1)
+    // getTotal(accPoints+1)
     setControl(true)
     return
   }
@@ -132,8 +131,17 @@ export default function Quiz({
     <div className={style.frame}>
       <div className={style.nivel}>
         <div>
-          <div className={style.progress}>
-            <div></div>
+          {/* 
+            barra diminuir com a vida
+
+            <div className={style.progress}>
+              <div></div>
+            </div> 
+          */}
+          <div className={style.vidas}>
+            <img src="../img/vidas.svg" alt="" />
+            <p>{chances}</p>
+
           </div>
           <div className={style.circleNivel}>
             <h1>{accPoints}</h1>

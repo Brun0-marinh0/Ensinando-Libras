@@ -7,8 +7,7 @@ import { ResetStatus } from '../../../controllers/questions/reset-status'
 import { RegisterRank } from '../../../controllers/rank/register'
 import { Score } from '../../../components/Score/index' //ac de pontos
 import { useRouter } from 'next/router'
-import { log } from 'console'
-import { api } from '../../../http'
+import Swal from 'sweetalert2'
 
 interface IData {
   answer: string
@@ -38,11 +37,21 @@ export default function Quiz() {
   const [t, setT] = useState(false)
   const [namePlayer, setNamePlayer] = useState('')
   const [totalScore, setTotalScore] = useState(0)
+  const [chances, setChances] = useState(3)
   const router = useRouter()
+
+  const decrementChances = () => {
+    // Decrementa uma chance
+    setChances(chances - 1)
+  }
+
+  const incrementScore = () => {
+    // Incrementa uma pontuação
+    setTotalScore(totalScore + 1)
+  }
 
   function getTotal(point: number){
     setTotalScore(point)
-    console.log(point)
   }
 
   async function update_status(id: number, answer: boolean) {
@@ -86,11 +95,23 @@ export default function Quiz() {
     getQuestion()
   }, [])
 
-  if (!question) {
+  useEffect(() => {
+    const handle = async () => {
+      if(chances === 0) {
+        await Swal.fire({
+          title: 'Suas chances acabaram',
+          text: 'Você errou 3 vezes :('
+        })
+      }
+    }
+    handle()
+  }, [chances])
+
+  if (!question || chances === 0) {
     return (
       <div className={style.card}>
         <div className={style.headerTitle}>
-          <h2>Você acertou <span>2</span>  perguntas!</h2>
+          <h2>Você acertou <span>{totalScore}</span>  perguntas!</h2>
         </div>
         <div className={style.form}>
           <p>Informe seu nome abaixo para ser registrado no ranking do jogo! :D</p>
@@ -121,7 +142,10 @@ export default function Quiz() {
           update_status={update_status}
           select_question={select_question}
           reset_questions={reset_questions}
-          getTotal={getTotal}
+          chances={chances}
+          decrementChances={decrementChances}
+          totalScore={totalScore}
+          incrementScore={incrementScore}
         />
       </div>
     </div>
