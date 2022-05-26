@@ -201,7 +201,7 @@ export default function Quiz({
               <p className={style.description}>{data.options.option_c}</p>
             )}
           </div>
-          <div onClick={selectButtongit4} style={{
+          <div onClick={selectButton4} style={{
             border: cor4
           }}>
             <Image
