@@ -1,0 +1,37 @@
+.bnt{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: .3rem solid var(--beige);
+    padding-bottom: 1rem;
+
+    .content{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-decoration: none;
+        height: 3.5rem;
+        width: 23rem;
+        border-radius: 1rem;
+        color: var(--bg);
+        font-size: 1.5rem;
+        font-weight: 600;
+        background: var(--yallow);
+        padding: 0 1rem;
+        cursor: pointer;
+
+        @media(max-width: 678px){
+            width: max(18rem, 20vw);
+        }
+
+        img{
+            width: 2.5rem;
+            transition: .2s;
+        }
+
+        &:hover img{
+            width: 4rem;
+            transform: rotateZ(30deg);
+        }
+    }
+}

@@ -1,0 +1,66 @@
+.container{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    div{
+        max-width: 500px;
+        width: 100%;
+        padding: 0 .5rem;
+        header{
+            padding-top:2rem;
+            a{
+                text-decoration: none;
+                color: var(--orange);
+                font-weight: 600;
+                font-size: 1rem;
+                padding: .5rem 1rem;
+                border-radius: .5rem;
+                transition: .5s;
+
+                &:hover{
+                    background-color: var(--orange);
+                    color: var(--bg);
+                    font-size: 1.2rem;
+                }
+
+            }
+        }
+        .title{
+            display: flex;
+            font-size: max(2.5rem, 3vw);
+            color: var(--blue);
+            img{
+                width: max(3rem, 6vw);
+            }
+        }
+    }
+    .content{
+        border: .1rem solid var(--beige);
+        max-width: 500px;
+        width: 100%;
+        height: 70vh;
+        position: fixed;
+        bottom: 0;
+        overflow-y: scroll;
+        padding: 1rem 1rem 0 1rem;
+        border-radius: 1rem 1rem 0 0;
+        
+
+        .rows{
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            border-bottom: .1rem solid var(--beige);
+
+            :nth-child(1){
+                color: var(--purple);
+                font-weight: 600;
+            }
+
+            :nth-child(2){
+                color: var(--yallow);
+            }
+        }
+    }
+}

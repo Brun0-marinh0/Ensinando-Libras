@@ -1,0 +1,239 @@
+.content {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--negativeSpace) 0;
+    overflow-y: scroll;
+    gap: 1rem;
+
+    footer{
+        background-color: var(--beige);
+        display: flex;
+        width: 100%;
+        height: 5rem;
+        position: fixed;
+        bottom: 0;
+        justify-content: center;
+        align-items: center;
+
+        a{
+            text-decoration: none;
+            background-color: var(--bg);
+            border: .2rem solid #bdbab1;
+            border-radius: 50%;
+            width: 4rem;
+            height: 4rem;
+            display: flex;
+            justify-content: center;
+            img{
+                width: 100%;
+                min-height: 2.5rem;
+                position: relative;
+                bottom: 0rem;
+                transition: .2s;
+            }
+            transition: .2s;
+
+            &:hover{
+                border: .2rem solid var(--blue);
+                img{
+                    bottom: .5rem;
+                    width: 4.5rem;
+                }
+            }
+        }
+
+    }
+}
+
+.frame {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: 3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+
+    .title{
+        color: var(--bg);
+        font-size: max(2rem, 3vw);
+
+        .textTitle{
+            animation: textTitle 2s linear alternate;
+            animation-fill-mode: forwards;
+            transform-origin: center;
+            transform-box: fill-box;
+
+            position: relative;
+            z-index: 9;
+
+
+        @keyframes textTitle {
+            from{
+                color: var(--bg);
+                top: 0;
+                
+            }
+            to{
+                color: var(--purple);
+                top: 25vh;
+                font-size:10rem;
+                
+            }
+        }
+        }
+    }
+    .ilustration{
+        img{
+            animation: myhand 2s linear alternate infinite;
+            animation-fill-mode: forwards;
+            transform-origin: center;
+            transform-box: fill-box;
+
+            @keyframes myhand {
+                from{
+                    transform: rotateY(20deg);
+                }
+                to{
+                    transform: rotateY(-20deg);
+                }
+            }
+        }
+    }
+    button{
+        padding: 1rem;
+        width: max(15rem, 20vw);
+        background: var(--yallow);
+        font-size: 2rem;
+        font-weight: bold;
+        color: var(--bg);
+        margin-bottom: 2rem;
+        border-radius: 1rem;
+        transition: .2s;
+
+        &:hover{
+            font-size: 2.5rem;
+        }
+    }
+
+    .btnStart{
+        animation: btnStart 2s linear alternate;
+        animation-fill-mode: forwards;
+        transform-origin: center;
+        transform-box: fill-box;
+
+        @keyframes btnStart {
+            from{
+                opacity: 1;
+                transform: translateY(0rem);
+            }
+            to{
+                opacity: 0;
+                transform: translateY(10rem);
+            }
+        }
+    }
+}
+
+.curtain {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: 2;
+    overflow: hidden;
+    display: flex;
+
+    div {
+        background: var(--purple);
+        height: 100vh;
+        width: 50%;
+    }
+
+    .curtainL {
+        animation: curtainL 2s linear alternate;
+        animation-fill-mode: forwards;
+        transform-origin: top;
+        transform-box: fill-box;
+        position: relative;
+        bottom: 30rem;
+
+        @keyframes curtainL {
+            from{
+                transform: rotateZ(0deg);
+                height: 200vh;
+                right: 0rem;
+            }
+            to{
+                transform: rotateZ(90deg);
+                height: 200vh;
+                right: 20rem;
+            }
+        }
+    }
+
+    .curtainR {
+        animation: curtainR 2s linear alternate;
+        animation-fill-mode: forwards;
+        transform-origin: top;
+        transform-box: fill-box;
+        position: relative;
+        bottom: 30rem;
+
+        @keyframes curtainR {
+            from{
+                transform: rotateZ(0deg);
+                height: 200vh;
+                left: 0rem;
+            }
+            to{
+                transform: rotateZ(-90deg);
+                height: 200vh;
+                left: 20rem;
+            }
+        }
+    }
+}
+
+.modalContent{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    .modal{
+        background: #FFFFFF;
+        height: 20rem;
+        padding: 1rem;
+
+        h1{
+            color: var(--purple);
+        }
+        h2{
+            color: var(--blue);
+            font-weight: 400;
+        }
+
+        header{
+            padding-top:2rem;
+            a{
+                text-decoration: none;
+                color: var(--orange);
+                font-weight: 600;
+                font-size: 1rem;
+                padding: .5rem 1rem;
+                border-radius: .5rem;
+                transition: .5s;
+    
+                &:hover{
+                    background-color: var(--orange);
+                    color: var(--bg);
+                    font-size: 1.2rem;
+                }
+    
+            }
+        }
+    }
+}
