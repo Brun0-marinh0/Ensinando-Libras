@@ -1,6 +1,12 @@
 export interface LevelOneProps{
     currentQuestion: number
-    levelOne:Object[]
+    levelOne: {
+        question: string
+        answerOptions: {
+            isCorrect: boolean
+            answerText: string
+        }[]
+    }[]
     onClick: any
 }
 
